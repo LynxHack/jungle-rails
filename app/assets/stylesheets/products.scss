@@ -19,6 +19,20 @@ main section.categories-show {
       padding-bottom: 80px;
       margin-top:    20px;
       // margin:        10px;
+      
+      .soldout{
+        background-color: #DD9896;
+        color: white;
+        position: relative;
+        top: -1.1em;
+        left: -1.1em;
+        height: 2.5em;
+        width: 7em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 5px;
+        text-align: center;
+        line-height: 35px;
+      }
 
       header img {
         max-width: 100%;
