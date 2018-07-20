@@ -1,4 +1,3 @@
-
 Thank you for your order, <%= @order.email %>!
 For your convenience, here are the details of your order.
 ===============================================
@@ -15,4 +14,4 @@ For your convenience, here are the details of your order.
 <% @order_items.each do |item| %>
   <% order_total += item.total_price %>
 <% end %>
-YOUR ORDER TOTAL: $<%= order_total %> 
+YOUR ORDER TOTAL: $<%= order_total %>

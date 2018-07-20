@@ -33,21 +33,15 @@ cat3 = Category.find_or_create_by! name: 'Furniture'
 
 puts "Re-creating Products ..."
 
+Review.destroy_all
 Product.destroy_all
 
 cat1.products.create!({
   name:  'Men\'s Classy shirt',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel1.jpg'),
-  quantity: 23,
+  quantity: 10,
   price: 64.99
-})
-
-cat1.reviews.create!({
-  product_id: 1,
-  user_id: 1,
-  description: 'lorum ipsum',
-  rating: 4
 })
 
 cat1.products.create!({
@@ -56,13 +50,6 @@ cat1.products.create!({
   image: open_asset('apparel2.jpg'),
   quantity: 18,
   price: 124.99
-})
-
-cat1.reviews.create!({
-  product_id: 2,
-  user_id: 1,
-  description: 'fish',
-  rating: 3
 })
 
 cat1.products.create!({
@@ -85,7 +72,7 @@ cat1.products.create!({
   name:  'Russian Spy Shoes',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel5.jpg'),
-  quantity: 8,
+  quantity: 0,
   price: 1_225.00
 })
 
@@ -96,6 +83,7 @@ cat1.products.create!({
   quantity: 82,
   price: 224.50
 })
+
 
 cat2.products.create!({
   name:  'Modern Skateboards',
@@ -144,8 +132,53 @@ cat3.products.create!({
   quantity: 0,
   price: 2_483.75
 })
+## REVIEWS
 
+puts "Re-creating Reviews ..."
 
-
+Review.create!([
+  {
+    product_id:  4,
+    user_id: 1,
+    description: 'This IS the best purchase I\'ve ever made',
+    rating: 5
+  },
+  {
+    product_id:  8,
+    user_id: 2,
+    description: 'This IS the worst purchase I\'ve ever made',
+    rating: 1
+  },
+  {
+    product_id:  6,
+    user_id: 3,
+    description: 'They work great and seem to be constructed well. They have held up so far with no signs of coming apart.',
+    rating: 1
+  },
+  {
+    product_id:  2,
+    user_id: 1,
+    description: 'I am happy with my purchase! I am 5\'8, size 8-10, and ordered the large which fit perfect. Those shorter might have to roll the top over so it won\'t drag on the bottom. The fabric is microfleece, which is a softness but it is still light. Living in CA, that works perfect for me! I ordered three and they are consistent. I have washed them several times already with no problems. Highly recommend!',
+    rating: 1
+  },
+  {
+    product_id:  1,
+    user_id: 3,
+    description: 'In before SOLD OUT, so happy with my purchase',
+    rating: 5
+  },
+  {
+    product_id:  2,
+    user_id: 3,
+    description: 'LAVE LAVE LAVE IT',
+    rating: 4
+  },
+  {
+    product_id:  5,
+    user_id: 3,
+    description: 'Not as described, much smaller than photo leads on.',
+    rating: 1
+  }
+  ])
 
 puts "DONE!"

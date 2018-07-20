@@ -25,6 +25,39 @@
         </dl>
       </div>
     </div>
+    <% if current_user %>
+    <hr>
+    <div class="row">
+    <h3 class="review-header">Write a Review</h3>
+      <%= form_for [@product, @review], url: `/products/#{@product.id}/reviews` do |f| %>
+        <div class="form-fields">Provide a Rating: <%= f.select :rating, %w{ 1 2 3 4 5 }, {:prompt => "Rate..."}, {:required => true} %></div>
+        <div class="form-fields">Write a Review: <%= f.text_area :description, :required => true %></div>
+        <br>
+        <div class="form-fields"><%= f.submit "Submit Review" %></div>
+      <% end %>
+    </div>
+    <% end %>
+    <div class="row">
+      <hr>
+      <% if @sorted.size > 0 %>
+      <h3 class="review-header">Reviews for this Product (<em>Average Rating: <%= @average %> / 5</em>)</h3>
+        <% @sorted.each do |review| %>
+            <dd><strong>Reviewer Name:</strong> <%= review.user.first_name + ' ' + review.user.last_name %></dd>
+            <dd><strong>Rating:</strong> <%= review.rating %> / 5</dd>
+            <br>
+            <dd><strong>Review:</strong><br><%= review.description %></dd>
+            <% if current_user == User.find(review.user_id) %>
+            <br>
+            <%= link_to 'Delete', product_review_path(review.product_id, review.id), method: :delete, class: 'btn btn-danger btn-xs' %>
+            <% end %>
+            <hr>
+        <% end %>
+      <% elsif @sorted.size == 0 && current_user %>
+        <h4>There are no reviews yet for this product. Use the form to write your own!</h4>
+      <% else %>
+        <h4>There are no reviews yet for this product. Please <a href="/login">login</a> or <a href="/signup">register</a> to write your own!</h4>
+      <% end %>
+    </div>
 
   </article>
 

@@ -1,10 +1,12 @@
 <h1>Register</h1>
 
 <%= form_for :user, url: '/users' do |f| %>
-    <div class="form-fields">First Name: <%= f.text_field :first_name %></div>
-    <div class="form-fields">Last Name: <%= f.text_field :last_name %></div>
-    <div class="form-fields">Email: <%= f.text_field :email %></div>
-    <div class="form-fields">Password: <%= f.password_field :password %></div>
-    <div class="form-fields">Password Confirmation: <%= f.password_field :password_confirmation %></div>
-    <div class="form-fields"><%= f.submit "Submit" %></div>
-<% end %> 
+
+  <div class="form-fields">First Name: <%= f.text_field :first_name, :required => true %></div>
+  <div class="form-fields">Last Name: <%= f.text_field :last_name, :required => true %></div>
+  <div class="form-fields">Email: <%= f.email_field :email, :required => true %></div>
+  <div class="form-fields">Password: <%= f.password_field :password, :required => true %></div>
+  <div class="form-fields">Password Confirmation: <%= f.password_field :password_confirmation, :required => true %></div>
+  <div class="form-fields"><%= f.submit "Submit" %></div>
+
+<% end %>
