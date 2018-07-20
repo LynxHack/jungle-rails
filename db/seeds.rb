@@ -43,12 +43,26 @@ cat1.products.create!({
   price: 64.99
 })
 
+cat1.reviews.create!({
+  product_id: 1,
+  user_id: 1,
+  description: 'lorum ipsum',
+  rating: 4
+})
+
 cat1.products.create!({
   name:  'Women\'s Zebra pants',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel2.jpg'),
   quantity: 18,
   price: 124.99
+})
+
+cat1.reviews.create!({
+  product_id: 2,
+  user_id: 1,
+  description: 'fish',
+  rating: 3
 })
 
 cat1.products.create!({
@@ -130,5 +144,8 @@ cat3.products.create!({
   quantity: 0,
   price: 2_483.75
 })
+
+
+
 
 puts "DONE!"
