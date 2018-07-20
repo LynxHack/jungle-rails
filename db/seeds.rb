@@ -83,7 +83,6 @@ cat1.products.create!({
   price: 224.50
 })
 
-
 cat2.products.create!({
   name:  'Modern Skateboards',
   description: Faker::Hipster.paragraph(4),
@@ -131,6 +130,5 @@ cat3.products.create!({
   quantity: 0,
   price: 2_483.75
 })
-
 
 puts "DONE!"
